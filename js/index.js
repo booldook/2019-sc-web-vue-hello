@@ -5,19 +5,33 @@ new Vue({
 	data: {
 		title: "Vue를 배워봅시다.",
 		str: '',
-		isPrdView: false,
-		items: null,
+		isPrdView: true,
+		items: [],
+		isSubmit: false,
 	},
 	created() {
-		this.title = "Vue가 생성되었습니다.";
-		this.isPrdView = true;
-		PrdResult.list().then((result) => {
-			this.items = result;
-		}).catch();
+		
 	},
 	methods: {
 		onTogglePrd(e) {
 			this.isPrdView = !this.isPrdView;
 		},
+		onSearchReset(e) {
+			this.str = '';
+			this.isSubmit = false;
+			this.items = [];
+		},
+		onSubmit(e) {
+			this.searchResult();
+		},
+		onKeyup(e) {
+			if(!this.str.length) this.onSearchReset();
+		},
+		searchResult() {
+			PrdResult.list().then((result) => {
+				this.isSubmit = true;
+				this.items = result;
+			});
+		}
 	}
 });
