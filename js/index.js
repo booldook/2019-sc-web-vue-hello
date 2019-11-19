@@ -1,14 +1,19 @@
+import PrdResult from './models/PrdResult.js';
+
 new Vue({
 	el: "#app",
 	data: {
 		title: "Vue를 배워봅시다.",
 		str: '',
 		isPrdView: false,
-		items: [
-			{id:1, title:"연어", desc:"맛있는 연어", src:"../img/salmon.jpg"},
-			{id:1, title:"체리", desc:"싱싱한 체리", src:"../img/cherries.jpg"},
-			{id:1, title:"와인", desc:"오래된 와인", src:"../img/wine.jpg"},
-		]
+		items: null,
+	},
+	created() {
+		this.title = "Vue가 생성되었습니다.";
+		this.isPrdView = true;
+		PrdResult.list().then((result) => {
+			this.items = result;
+		}).catch();
 	},
 	methods: {
 		onTogglePrd(e) {
