@@ -8,9 +8,8 @@ new Vue({
 	el: "#app",
 	data: {
 		title: "Vue를 배워봅시다.",
-		str: '',
 		isPrdView: true,
-		items: [],
+		searchBarQuery: '',
 		isSubmit: false,
 	},
 	created() {
@@ -23,16 +22,9 @@ new Vue({
 		onTogglePrd(e) {
 			this.isPrdView = !this.isPrdView;
 		},
-		onSearchReset(e) {
-			this.str = '';
-			this.isSubmit = false;
-			this.items = [];
-		},
-		onSubmit(e) {
+		onSubmit(query) {
+			this.searchBarQuery = query;
 			this.searchResult();
-		},
-		onKeyup(e) {
-			if(!this.str.length) this.onSearchReset();
 		},
 		searchResult() {
 			PrdResult.list().then((result) => {

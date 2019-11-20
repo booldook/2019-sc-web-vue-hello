@@ -17,7 +17,7 @@
 				<h1>{{title}}</h1>
 			</div>
 			<div class="search-wrap">
-				<search-bar></search-bar>
+				<search-bar v-bind:value="searchBarQuery" v-on:@submit="onSubmit"></search-bar>
 			</div>
 			<div v-if="isSubmit">
 				<div class="mt-3">
@@ -46,9 +46,9 @@
 
 <template id="search-bar">
 	<form v-on:submit.prevent="onSubmit">
-		<input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요." v-model="str" v-on:keyup="onKeyup">
+		<input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요." v-model="query" v-on:keyup="onKeyup">
 		<i class="fas fa-times-circle btn-reset" 
-		v-show="str.length"
+		v-show="query.length"
 		v-on:click="onSearchReset"></i>
 	</form>
 </template>
