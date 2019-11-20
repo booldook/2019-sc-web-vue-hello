@@ -1,4 +1,8 @@
+/* Import Model */
 import PrdResult from './models/PrdResult.js';
+
+/* Import Component */
+import SearchComponent from './components/SearchComponent.js';
 
 new Vue({
 	el: "#app",
@@ -11,6 +15,9 @@ new Vue({
 	},
 	created() {
 		
+	},
+	components : {
+		'search-bar': SearchComponent,
 	},
 	methods: {
 		onTogglePrd(e) {

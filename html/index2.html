@@ -14,9 +14,20 @@
 
 <body>
 	<div id="app">
-		<div class="container text-center">
-			<h1>{{str}}</h1>
-			<input type="text" v-model="str">
+		<div class="container">
+			<h1 class="text-center" v-for="item in txts">{{item}}</h1>
+			<form v-on:submit.prevent="onSubmit">
+				<input type="text" class="form-control my-2" v-model="str">
+			</form>
+			<div class="prd-wrap">
+				<ul class="prds d-flex justify-content-evenly">
+					<li class="prd" style="flex: 32% 0 0;" v-for="item in items">
+						<div><img v-bind:src="item.src" v-bind:alt="item.title" class="w-100"></div>
+						<div class="py-2">{{item.title}}</div>
+						<div class="py-2">{{item.desc}}</div>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<script src="../js/vue.js"></script>
