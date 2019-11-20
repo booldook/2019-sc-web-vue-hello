@@ -4,15 +4,12 @@ export default {
 	data() {
 		return {
 			query: this.value,
-			items: [],
-			isSubmit: false,
 		}
 	},
 	methods: {
 		onSearchReset(e) {
 			this.query = '';
-			this.isSubmit = false;
-			this.items = [];
+			this.$emit('@reset');
 		},
 		onSubmit(e) {
 			this.$emit('@submit', this.query);

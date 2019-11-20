@@ -26,6 +26,10 @@ new Vue({
 			this.searchBarQuery = query;
 			this.searchResult();
 		},
+		onSearchReset() {
+			this.isSubmit = false;
+			this.items = [];
+		},
 		searchResult() {
 			PrdResult.list().then((result) => {
 				this.isSubmit = true;

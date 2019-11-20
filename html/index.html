@@ -17,7 +17,7 @@
 				<h1>{{title}}</h1>
 			</div>
 			<div class="search-wrap">
-				<search-bar v-bind:value="searchBarQuery" v-on:@submit="onSubmit"></search-bar>
+				<search-bar v-bind:value="searchBarQuery" v-on:@submit="onSubmit" v-on:@reset="onSearchReset"></search-bar>
 			</div>
 			<div v-if="isSubmit">
 				<div class="mt-3">
